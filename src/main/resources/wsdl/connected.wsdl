@@ -1,0 +1,2748 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://messagepoint.com/api/schemas" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://messagepoint.com/api/definitions" targetNamespace="http://messagepoint.com/api/definitions">
+<wsdl:types xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mp="http://messagepoint.com/api/schemas" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://messagepoint.com/api/schemas">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="BranchId" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="NodeId" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Prerelease" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ActivateExistingSchemaRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="nodeName" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="nodeFriendlyName" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="nodeSchemaName" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="nodeInstanceType" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="task" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ActivateExistingSchemaResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="AuditReportRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FromDate" type="xs:date"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ToDate" type="xs:date"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="AuditReportResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="MetadataReportRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Touchpoint" type="mp:TouchpointType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="MetadataReportResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="MessageAuditReportRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Touchpoint" type="mp:TouchpointType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="MessageAuditReportResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="BackgroundImageDownloadRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="SectionNumber" type="xs:unsignedInt"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="BackgroundImageDownloadResponse">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:choice xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FailureResponse" type="xs:string"/>
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Touchpoint" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" minOccurs="0" name="Section" type="mp:SectionFileType"/>
+</xs:sequence>
+</xs:choice>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CompositionPackageUpdateRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="PackageId" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CompositionPackage" type="mp:CompositionPackageType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CompositionPackageUpdateResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="SFTPRepoSyncRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="folder" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="metatags" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="globalContent" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="VariableContentEnabled" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ActivateTarget" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="SFTPRepoSyncResponse" type="mp:BackgroundTaskIdentificationResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="GetBackgroundTaskStatusRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Id" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="GetBackgroundTaskStatusResponse" type="mp:BackgroundTaskStatusType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="GetBackgroundTaskOutputFileRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Id" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="GetBackgroundTaskOutputFileResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CompositionPackageUploadRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="TouchpointCollection" type="mp:TouchpointCollectionType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CompositionPackage" type="mp:CompositionPackageType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CompositionPackageUploadResponse" type="mp:ObjectCreateResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CompositionPackageListRequest" type="mp:ClientIdentificationType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CompositionPackageListResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ContentSearchRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="SearchString" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Advanced" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ContentSearchResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TargetingGroupsSearchRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="SearchString" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Advanced" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TargetingGroupsSearchResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TargetingRulesSearchRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="SearchString" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Advanced" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TargetingRulesSearchResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CreateSandboxInstanceRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FromNode" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CreateUser" type="mp:UserType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CreateSandboxInstanceResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataAnonymizeRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="TouchpointCollection" type="mp:TouchpointCollectionType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataAnonymizeResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataFileListRequest" type="mp:ClientIdentificationType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataFileListResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataFileUploadRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataFileName" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="SourceType" type="xs:int"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Filename" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ChunkNumber" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Base64Content" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" minOccurs="0" name="Touchpoint" type="mp:TouchpointType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataFileUploadResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataFileDownloadRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ChunkNumber" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ChunkSize" type="xs:unsignedInt"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataFileDownloadResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CreateDataResourceRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="PrimaryDataFileName" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ReferenceDataFileList" type="mp:ReferenceDataFileListType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Touchpoint" type="mp:TouchpointType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CreateDataResourceResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UploadProcessedJobRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="PodId" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobId" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Type" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ChunkNumber" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Base64Content" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="JobKey" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="CheckSum" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="FileSize" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ReturnCode" type="xs:unsignedInt"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UploadProcessedJobResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UploadJobReportRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Filename" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ChunkNumber" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Base64Content" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="CheckSum" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="FileSize" type="xs:unsignedInt"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UploadJobReportResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UploadEmailTemplateRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Filename" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ChunkNumber" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ChunkSize" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Base64Content" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="CheckSum" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="FileSize" type="xs:unsignedInt"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UploadEmailTemplateResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DeleteFileRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FileList" type="mp:FileListType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DeleteFileResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DeliveryReportRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FromDate" type="xs:date"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ToDate" type="xs:date"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="MessageList" type="mp:MessageListType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DeliveryReportResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DiagnosticRequest" type="mp:ClientIdentificationType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DiagnosticResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UsersReportRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="outputType" type="xs:unsignedInt"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UsersReportResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UsersTemplateRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="userGuid" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UsersTemplateResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CreateActivateUserRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Filename" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ChunkNumber" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Base64Content" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CreateActivateUserResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UnifiedLoginReportRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="outputType" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="includePincLicenseStatus" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UnifiedLoginReportResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DomainReportRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="outputType" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="includeUserManagementInfo" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="includeLicenseManagementInfo" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="includeFeatureActivationInfo" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DomainReportResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FileChunkDownloadRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Filename" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ChunkNumber" type="xs:unsignedInt"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FileChunkDownloadResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FileChunkUploadRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Filename" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ChunkNumber" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Base64Content" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FileChunkUploadResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FileListRequest" type="mp:ClientIdentificationType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FileListResponse" type="mp:FileListType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ImportJobStatsRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobId" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="BatchId" type="xs:int"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FileList" type="mp:FileListType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="SimulationReport" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="SegmentationReport" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ImportJobStatsResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ImportTransactionStatsRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobId" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TransactionId" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FileList" type="mp:FileListType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ImportTransactionStatsResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobDiagnosticBundleRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="JobId" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="DeliveryEventId" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Chunk" type="xs:unsignedInt"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobDiagnosticBundleResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobServerBundleRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="JobId" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="DeliveryEventId" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Chunk" type="xs:unsignedInt"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobServerBundleResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobClientBundleRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="JobId" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="DeliveryEventId" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Chunk" type="xs:unsignedInt"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobClientBundleResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DeactivateUserRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="IdPUserGuid" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DeactivateUserResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="MessageListRequest" type="mp:ClientIdentificationType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="MessageListResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="MessageContentQueryRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="LanguageContent" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="MessageContentQueryResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="NodeListRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="verbose" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="NodeListResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="NodeToNodeCopyRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="FromNode" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ToNode" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="NodeToNodeCopyResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="RerunTestRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="TestId" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="TestGuid" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="JobId" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="RerunTestResponse" type="mp:ObjectCreateResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TestListRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType"/>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TestListResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointDeliveryEventRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="TouchpointCollection" type="mp:TouchpointCollectionType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="APIRetrieve" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointDeliveryEventResponse" type="mp:ObjectCreateResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointProductionJobListRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="TouchpointCollection" type="mp:TouchpointCollectionType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="FromDate" type="xs:date"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointProductionJobListResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointListRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="RequesterUsername" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ListAll" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ExplicitResponse" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointListResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataResourceListRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Touchpoint" type="mp:TouchpointType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataResourceListResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointCollectionListRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ListAll" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointCollectionListResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointImportRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Filename" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ChunkNumber" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Base64Content" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ActivateTarget" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="RenameIfExisting" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointImportResponse" type="mp:BackgroundTaskIdentificationResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointCloneRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DocumentId" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="TargetNodeId" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="IncludeMessages" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="IncludeAllVariables" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointCloneResponse" type="mp:BackgroundTaskIdentificationResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointExportRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ModelGuid" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Type" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ExtensionType" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Touchpoint" type="mp:TouchpointType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointExportResponse" type="mp:BackgroundTaskIdentificationResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataSourceListRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="SourceType" type="xs:int"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="SlimResponse" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ExplicitResponse" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ReferencedDataElements" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataSourceListResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CreateConnectedOrderRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="AuthorUsername" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataPointList" type="mp:ConnectedOrderDataPointListType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="NewExternalOrderId" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="TagCloud" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="CreateProof" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Email" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="AutoApprove" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CreateConnectedOrderResponse" type="mp:CreateConnectedOrderResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CloneConnectedOrderRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ExternalOrderId" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="NewExternalOrderId" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="AuthorUsername" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CloneConnectedOrderResponse" type="mp:CloneConnectedOrderResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="RemoveConnectedOrderRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="RequesterUsername" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ExternalOrderIdList" type="mp:ExternalOrderIdListType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="RemoveConnectedOrderResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ReleaseForApprovalOrActivateConnectedOrderRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ExternalOrderId" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ReleaseForApprovalOrActivateConnectedOrderResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ApproveConnectedOrderRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ExternalOrderId" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ApproveConnectedOrderResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="InitiateConnectedOrderDeliveryRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ExternalOrderIdList" type="mp:ExternalOrderIdListType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Activate" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="TouchpointCollection" type="mp:TouchpointCollectionType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="StartDate" type="xs:dateTime"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="EndDate" type="xs:dateTime"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="IncludedOrders" type="mp:IncludeConnectedOrderType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="InitiateConnectedOrderDeliveryResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ConnectedOrderListRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="RequesterUsername" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="AuthorUsername" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="AssigneeUsername" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ExternalOrderIdList" type="mp:ExternalOrderIdListType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Status" type="mp:ConnectedOrderStatusType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ExplicitResponse" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="IncludeTestOrders" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="JobStatusStateToInclude" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="SlimResponse" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ConnectedOrderListResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ProjectListRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="GuidList" type="mp:GuidListType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Status" type="mp:ProjectStatusType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ProjectListResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ProjectAuditReportRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Guid" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ProjectAuditReportResponse" type="mp:FileResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobStatusRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="JobId" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ConnectedOrderExternalId" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ConnectedOrderStateToInclude" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobStatusResponse" type="mp:JobStatusResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="EditTaskRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Guid" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="OwnerUsername" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Description" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Tags" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="DueDate" type="xs:date"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="HoursBeforeReminderIsSent" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" minOccurs="0" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Message" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="LocalSmartText" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="LocalImage" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Variant" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="SmartText" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ImageLibrary" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="TargetGroup" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="EditTaskResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="RemoveTaskRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="GuidList" type="mp:GuidListType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="RemoveTaskResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TaskListRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Id" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Status" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="OwnerUsername" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TaskListResponse" type="mp:ObjectListResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobPerformanceReportRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="TypeList" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="StatusList" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FromDate" type="xs:date"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ToDate" type="xs:date"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ExtensionType" type="xs:unsignedInt"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobPerformanceReportResponse" type="mp:BackgroundTaskIdentificationResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="EditTestRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Guid" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Touchpoint" type="mp:TouchpointType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="TestData" type="mp:DataResourceType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="TestDate" type="xs:dateTime"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="AnalysisMode" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="UseAllWorkCopies" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="UseAllWorkCopiesForLibAssets" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="EditTestResponse" type="mp:SimpleResponseType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="RemoveTestRequest">
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="mp:ClientIdentificationType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="GuidList" type="mp:GuidListType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="RemoveTestResponse" type="mp:SimpleResponseType"/>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CompositionPackageType">
+<xs:all xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="PackageName" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="CFTemplateFile" type="mp:UploadFileType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="CompositionFile" type="mp:UploadFileType"/>
+</xs:all>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FileListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" name="FileName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="MessageListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" name="Message" type="mp:MessageType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="MessageType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:choice xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="InstanceId" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ModelId" type="xs:long"/>
+</xs:choice>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointType">
+<xs:all xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Guid" type="xs:string"/>
+</xs:all>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointCollectionType">
+<xs:all xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Guid" type="xs:string"/>
+</xs:all>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataResourceType">
+<xs:all xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Guid" type="xs:string"/>
+</xs:all>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="SectionFileType">
+<xs:all xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Number" type="xs:int"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Filename" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Base64Content" type="xs:string"/>
+</xs:all>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UploadFileType">
+<xs:all xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Filename" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Base64Content" type="xs:string"/>
+</xs:all>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ObjectListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:any xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0"/>
+</xs:sequence>
+<xs:attribute xmlns:xs="http://www.w3.org/2001/XMLSchema" name="count" type="xs:int"/>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FileResponseType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:choice xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FailureResponse" type="xs:string"/>
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Filename" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Base64Content" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ChunkNumber" type="xs:unsignedInt"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Chunks" type="xs:unsignedInt"/>
+</xs:sequence>
+</xs:choice>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="FailureResponse" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" minOccurs="0" name="Job" type="mp:JobType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Date" type="xs:dateTime"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Job" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DeliveryEvent" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="NodeListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" minOccurs="0" name="Node" type="mp:NodeType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="NodeType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FriendlyName" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Guid" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Enabled" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Default" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="SimpleResponseType">
+<xs:choice xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="SuccessResponse" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FailureResponse" type="xs:string"/>
+</xs:choice>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ObjectListResponseType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:choice xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FailureResponse" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ObjectList" type="mp:ObjectListType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointList" type="mp:TouchpointListType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ConnectedOrderList" type="mp:ConnectedOrderListType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataSourceList" type="mp:DataSourceListType"/>
+</xs:choice>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ObjectCreateResponseType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:choice xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FailureResponse" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="NewObjects" type="mp:ObjectListType"/>
+</xs:choice>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UserType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FirstName" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="LastName" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Email" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Role" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TargetGroupsSearchResponseType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FirstName" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="LastName" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Email" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Role" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="SearchString" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Advanced" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TargetRulesSearchResponseType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Conditions" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="URL" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="BackgroundTaskStatusType">
+<xs:choice xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="BackgroundTaskStatusDetails" type="mp:BackgroundTaskStatusDetailsType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FailureResponse" type="xs:string"/>
+</xs:choice>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="BackgroundTaskStatusDetailsType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Id" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Type" type="xs:int"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="SubType" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Description" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Progress" type="xs:int"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IsVisible" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IsActive" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Complete" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Error" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="BackgroundTaskIdentificationResponseType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:choice xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Id" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FailureResponse" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="SuccessResponse" type="xs:string"/>
+</xs:choice>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CloneConnectedOrderResponseType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:choice xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="SuccessResponse" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="NewExternalOrderId" type="xs:string"/>
+</xs:sequence>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FailureResponse" type="xs:string"/>
+</xs:choice>
+</xs:sequence>
+</xs:complexType>
+<xs:simpleType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IncludeConnectedOrderType">
+<xs:restriction xmlns:xs="http://www.w3.org/2001/XMLSchema" base="xs:string">
+<xs:enumeration xmlns:xs="http://www.w3.org/2001/XMLSchema" value="NEW_PRODUCTION"/>
+<xs:enumeration xmlns:xs="http://www.w3.org/2001/XMLSchema" value="PRODUCTION"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ConnectedOrderStatusType">
+<xs:restriction xmlns:xs="http://www.w3.org/2001/XMLSchema" base="xs:string">
+<xs:enumeration xmlns:xs="http://www.w3.org/2001/XMLSchema" value="WORKING_COPY"/>
+<xs:enumeration xmlns:xs="http://www.w3.org/2001/XMLSchema" value="PENDING_APPROVAL"/>
+<xs:enumeration xmlns:xs="http://www.w3.org/2001/XMLSchema" value="ACTIVE"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ExternalOrderIdListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" name="ExternalOrderId" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="CreateConnectedOrderResponseType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:choice xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="SuccessResponse" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="NewExternalOrderId" type="xs:string"/>
+</xs:sequence>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FailureResponse" type="xs:string"/>
+</xs:choice>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ConnectedOrderDataPointListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" name="DataPoint" type="mp:ConnectedOrderDataPointType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ConnectedOrderDataPointType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:choice xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Connector" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Value" type="xs:string"/>
+</xs:choice>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="GuidListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" name="Guid" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:simpleType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ProjectStatusType">
+<xs:restriction xmlns:xs="http://www.w3.org/2001/XMLSchema" base="xs:string">
+<xs:enumeration xmlns:xs="http://www.w3.org/2001/XMLSchema" value="COMPLETE"/>
+<xs:enumeration xmlns:xs="http://www.w3.org/2001/XMLSchema" value="OVERDUE"/>
+<xs:enumeration xmlns:xs="http://www.w3.org/2001/XMLSchema" value="ACTIVE"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" minOccurs="0" name="Touchpoint" type="mp:TouchpointInfoType"/>
+</xs:sequence>
+<xs:attribute xmlns:xs="http://www.w3.org/2001/XMLSchema" name="count" type="xs:int"/>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TouchpointInfoType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Guid" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Connected" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="SelectionType" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Channel" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="OmniChannel" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Channels" type="mp:ChannelsListType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Connector" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Description" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ProductionChangeStatus" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Metadata" type="mp:MetadataType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ChannelsListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Channel" type="mp:ChannelsInfoType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ChannelsInfoType">
+<xs:simpleContent xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:extension xmlns:xs="http://www.w3.org/2001/XMLSchema" base="xs:string">
+<xs:attribute xmlns:xs="http://www.w3.org/2001/XMLSchema" name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="MetadataType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Touchpoint" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Variant" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ConnectedOrderListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" minOccurs="0" name="Order" type="mp:ConnectedOrderType"/>
+</xs:sequence>
+<xs:attribute xmlns:xs="http://www.w3.org/2001/XMLSchema" name="count" type="xs:int"/>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ConnectedOrderType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ExternalOrderId" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="AuthorUsername" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="AuthorInfo" type="mp:UserInfoType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Assigned" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="PrimaryIdentifier" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Status" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Channel" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="CreatedDate" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="LastActivationDate" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="AwaitingApprovalFrom" type="mp:UserInfoListType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ApprovedBy" type="mp:UserInfoListType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="FinalApprover" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="LastProductionDate" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="tpGuid" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="isTestOrder" type="xs:boolean"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="OrderData" type="mp:ConnectedOrderDataPointInfoListType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="JobStatus" type="mp:JobStatusType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Error" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UserInfoListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" name="UserInfo" type="mp:UserInfoType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UserInfoType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Guid" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FirstName" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="LastName" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Email" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UserName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ConnectedOrderDataPointInfoListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" name="DataPoint" type="mp:ConnectedOrderDataPointInfoType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ConnectedOrderDataPointInfoType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Connector" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Value" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobStatusResponseType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:choice xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Status" type="mp:JobStatusType"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="ErrorMessage" type="xs:string"/>
+</xs:sequence>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="FailureResponse" type="xs:string"/>
+</xs:choice>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="JobStatusType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Code" type="xs:long"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ReferenceDataFileListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" name="ReferenceDataFile" type="mp:ReferenceDataFileType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ReferenceDataFileType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:choice xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ReferenceDataSourceName" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ReferenceDataFileName" type="xs:string"/>
+</xs:choice>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataSourceListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" minOccurs="0" name="DataSource" type="mp:DataSourceType"/>
+</xs:sequence>
+<xs:attribute xmlns:xs="http://www.w3.org/2001/XMLSchema" name="count" type="xs:int"/>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataSourceType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Guid" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="SourceType" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="DataElementList" type="mp:DataElementListType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataElementListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" name="DataElement" type="mp:DataElementType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="DataElementType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Type" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IsReferenced" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TaskListType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" maxOccurs="unbounded" minOccurs="0" name="Task" type="mp:TaskType"/>
+</xs:sequence>
+<xs:attribute xmlns:xs="http://www.w3.org/2001/XMLSchema" name="count" type="xs:int"/>
+</xs:complexType>
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="TaskType">
+<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Name" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Guid" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Status" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Assignee" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Due" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Created" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Type" type="xs:string"/>
+<xs:element xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Project" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="SFTPRepoSyncResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:SFTPRepoSyncResponse" name="SFTPRepoSyncResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TestListRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TestListRequest" name="TestListRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveConnectedOrderResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:RemoveConnectedOrderResponse" name="RemoveConnectedOrderResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TargetingGroupsSearchRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TargetingGroupsSearchRequest" name="TargetingGroupsSearchRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointListResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TouchpointListResponse" name="TouchpointListResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MetadataReportRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:MetadataReportRequest" name="MetadataReportRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TaskListResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TaskListResponse" name="TaskListResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileListResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DataFileListResponse" name="DataFileListResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ProjectAuditReportResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ProjectAuditReportResponse" name="ProjectAuditReportResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointCloneRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TouchpointCloneRequest" name="TouchpointCloneRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DomainReportResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DomainReportResponse" name="DomainReportResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateConnectedOrderResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CreateConnectedOrderResponse" name="CreateConnectedOrderResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="GetBackgroundTaskStatusRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:GetBackgroundTaskStatusRequest" name="GetBackgroundTaskStatusRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeactivateUserResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DeactivateUserResponse" name="DeactivateUserResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ConnectedOrderListResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ConnectedOrderListResponse" name="ConnectedOrderListResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ActivateExistingSchemaResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ActivateExistingSchemaResponse" name="ActivateExistingSchemaResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="NodeToNodeCopyResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:NodeToNodeCopyResponse" name="NodeToNodeCopyResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobClientBundleRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:JobClientBundleRequest" name="JobClientBundleRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointCloneResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TouchpointCloneResponse" name="TouchpointCloneResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointImportResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TouchpointImportResponse" name="TouchpointImportResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="GetBackgroundTaskOutputFileRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:GetBackgroundTaskOutputFileRequest" name="GetBackgroundTaskOutputFileRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataResourceListResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DataResourceListResponse" name="DataResourceListResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="SFTPRepoSyncRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:SFTPRepoSyncRequest" name="SFTPRepoSyncRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateDataResourceRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CreateDataResourceRequest" name="CreateDataResourceRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadJobReportResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:UploadJobReportResponse" name="UploadJobReportResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateConnectedOrderRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CreateConnectedOrderRequest" name="CreateConnectedOrderRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="AuditReportRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:AuditReportRequest" name="AuditReportRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="GetBackgroundTaskOutputFileResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:GetBackgroundTaskOutputFileResponse" name="GetBackgroundTaskOutputFileResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ContentSearchResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ContentSearchResponse" name="ContentSearchResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ApproveConnectedOrderRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ApproveConnectedOrderRequest" name="ApproveConnectedOrderRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeliveryReportRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DeliveryReportRequest" name="DeliveryReportRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileDownloadResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DataFileDownloadResponse" name="DataFileDownloadResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointDeliveryEventRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TouchpointDeliveryEventRequest" name="TouchpointDeliveryEventRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobClientBundleResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:JobClientBundleResponse" name="JobClientBundleResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataSourceListRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DataSourceListRequest" name="DataSourceListRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveConnectedOrderRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:RemoveConnectedOrderRequest" name="RemoveConnectedOrderRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DiagnosticRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DiagnosticRequest" name="DiagnosticRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageContentQueryRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:MessageContentQueryRequest" name="MessageContentQueryRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageContentQueryResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:MessageContentQueryResponse" name="MessageContentQueryResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileListResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:FileListResponse" name="FileListResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EditTaskRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:EditTaskRequest" name="EditTaskRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DiagnosticResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DiagnosticResponse" name="DiagnosticResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeactivateUserRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DeactivateUserRequest" name="DeactivateUserRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageListRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:MessageListRequest" name="MessageListRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UnifiedLoginReportRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:UnifiedLoginReportRequest" name="UnifiedLoginReportRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ProjectAuditReportRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ProjectAuditReportRequest" name="ProjectAuditReportRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageUpdateResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CompositionPackageUpdateResponse" name="CompositionPackageUpdateResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ProjectListResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ProjectListResponse" name="ProjectListResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeleteFileResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DeleteFileResponse" name="DeleteFileResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataAnonymizeResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DataAnonymizeResponse" name="DataAnonymizeResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveTestResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:RemoveTestResponse" name="RemoveTestResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TargetingGroupsSearchResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TargetingGroupsSearchResponse" name="TargetingGroupsSearchResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointExportResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TouchpointExportResponse" name="TouchpointExportResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataResourceListRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DataResourceListRequest" name="DataResourceListRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobStatusRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:JobStatusRequest" name="JobStatusRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RerunTestRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:RerunTestRequest" name="RerunTestRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeleteFileRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DeleteFileRequest" name="DeleteFileRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ImportTransactionStatsRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ImportTransactionStatsRequest" name="ImportTransactionStatsRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="GetBackgroundTaskStatusResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:GetBackgroundTaskStatusResponse" name="GetBackgroundTaskStatusResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileListRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DataFileListRequest" name="DataFileListRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointProductionJobListResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TouchpointProductionJobListResponse" name="TouchpointProductionJobListResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="InitiateConnectedOrderDeliveryRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:InitiateConnectedOrderDeliveryRequest" name="InitiateConnectedOrderDeliveryRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveTaskResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:RemoveTaskResponse" name="RemoveTaskResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobDiagnosticBundleRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:JobDiagnosticBundleRequest" name="JobDiagnosticBundleRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CloneConnectedOrderResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CloneConnectedOrderResponse" name="CloneConnectedOrderResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobServerBundleRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:JobServerBundleRequest" name="JobServerBundleRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileUploadResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DataFileUploadResponse" name="DataFileUploadResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DomainReportRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DomainReportRequest" name="DomainReportRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageUploadResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CompositionPackageUploadResponse" name="CompositionPackageUploadResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileChunkDownloadRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:FileChunkDownloadRequest" name="FileChunkDownloadRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TargetingRulesSearchResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TargetingRulesSearchResponse" name="TargetingRulesSearchResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataAnonymizeRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DataAnonymizeRequest" name="DataAnonymizeRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileChunkDownloadResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:FileChunkDownloadResponse" name="FileChunkDownloadResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TaskListRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TaskListRequest" name="TaskListRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TestListResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TestListResponse" name="TestListResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ReleaseForApprovalOrActivateConnectedOrderResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ReleaseForApprovalOrActivateConnectedOrderResponse" name="ReleaseForApprovalOrActivateConnectedOrderResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ImportJobStatsRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ImportJobStatsRequest" name="ImportJobStatsRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="NodeListResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:NodeListResponse" name="NodeListResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EditTestRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:EditTestRequest" name="EditTestRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="InitiateConnectedOrderDeliveryResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:InitiateConnectedOrderDeliveryResponse" name="InitiateConnectedOrderDeliveryResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="AuditReportResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:AuditReportResponse" name="AuditReportResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointCollectionListRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TouchpointCollectionListRequest" name="TouchpointCollectionListRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ReleaseForApprovalOrActivateConnectedOrderRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ReleaseForApprovalOrActivateConnectedOrderRequest" name="ReleaseForApprovalOrActivateConnectedOrderRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EditTestResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:EditTestResponse" name="EditTestResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveTaskRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:RemoveTaskRequest" name="RemoveTaskRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EditTaskResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:EditTaskResponse" name="EditTaskResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageListResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:MessageListResponse" name="MessageListResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileListRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:FileListRequest" name="FileListRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ContentSearchRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ContentSearchRequest" name="ContentSearchRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ConnectedOrderListRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ConnectedOrderListRequest" name="ConnectedOrderListRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadJobReportRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:UploadJobReportRequest" name="UploadJobReportRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageUpdateRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CompositionPackageUpdateRequest" name="CompositionPackageUpdateRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageUploadRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CompositionPackageUploadRequest" name="CompositionPackageUploadRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UsersTemplateResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:UsersTemplateResponse" name="UsersTemplateResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointExportRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TouchpointExportRequest" name="TouchpointExportRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ImportJobStatsResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ImportJobStatsResponse" name="ImportJobStatsResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UnifiedLoginReportResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:UnifiedLoginReportResponse" name="UnifiedLoginReportResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointCollectionListResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TouchpointCollectionListResponse" name="TouchpointCollectionListResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataSourceListResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DataSourceListResponse" name="DataSourceListResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadProcessedJobResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:UploadProcessedJobResponse" name="UploadProcessedJobResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ActivateExistingSchemaRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ActivateExistingSchemaRequest" name="ActivateExistingSchemaRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobPerformanceReportRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:JobPerformanceReportRequest" name="JobPerformanceReportRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="NodeListRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:NodeListRequest" name="NodeListRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UsersReportResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:UsersReportResponse" name="UsersReportResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadEmailTemplateResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:UploadEmailTemplateResponse" name="UploadEmailTemplateResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeliveryReportResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DeliveryReportResponse" name="DeliveryReportResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageListResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CompositionPackageListResponse" name="CompositionPackageListResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TargetingRulesSearchRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TargetingRulesSearchRequest" name="TargetingRulesSearchRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UsersReportRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:UsersReportRequest" name="UsersReportRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UsersTemplateRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:UsersTemplateRequest" name="UsersTemplateRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobServerBundleResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:JobServerBundleResponse" name="JobServerBundleResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointProductionJobListRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TouchpointProductionJobListRequest" name="TouchpointProductionJobListRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateActivateUserRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CreateActivateUserRequest" name="CreateActivateUserRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CloneConnectedOrderRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CloneConnectedOrderRequest" name="CloneConnectedOrderRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ApproveConnectedOrderResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ApproveConnectedOrderResponse" name="ApproveConnectedOrderResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageListRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CompositionPackageListRequest" name="CompositionPackageListRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileChunkUploadRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:FileChunkUploadRequest" name="FileChunkUploadRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RerunTestResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:RerunTestResponse" name="RerunTestResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveTestRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:RemoveTestRequest" name="RemoveTestRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateSandboxInstanceRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CreateSandboxInstanceRequest" name="CreateSandboxInstanceRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ImportTransactionStatsResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ImportTransactionStatsResponse" name="ImportTransactionStatsResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadEmailTemplateRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:UploadEmailTemplateRequest" name="UploadEmailTemplateRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageAuditReportResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:MessageAuditReportResponse" name="MessageAuditReportResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateDataResourceResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CreateDataResourceResponse" name="CreateDataResourceResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ProjectListRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:ProjectListRequest" name="ProjectListRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageAuditReportRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:MessageAuditReportRequest" name="MessageAuditReportRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="BackgroundImageDownloadRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:BackgroundImageDownloadRequest" name="BackgroundImageDownloadRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MetadataReportResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:MetadataReportResponse" name="MetadataReportResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileUploadRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DataFileUploadRequest" name="DataFileUploadRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateActivateUserResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CreateActivateUserResponse" name="CreateActivateUserResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadProcessedJobRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:UploadProcessedJobRequest" name="UploadProcessedJobRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointListRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TouchpointListRequest" name="TouchpointListRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="NodeToNodeCopyRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:NodeToNodeCopyRequest" name="NodeToNodeCopyRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointImportRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TouchpointImportRequest" name="TouchpointImportRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobDiagnosticBundleResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:JobDiagnosticBundleResponse" name="JobDiagnosticBundleResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobStatusResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:JobStatusResponse" name="JobStatusResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobPerformanceReportResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:JobPerformanceReportResponse" name="JobPerformanceReportResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileChunkUploadResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:FileChunkUploadResponse" name="FileChunkUploadResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointDeliveryEventResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:TouchpointDeliveryEventResponse" name="TouchpointDeliveryEventResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="BackgroundImageDownloadResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:BackgroundImageDownloadResponse" name="BackgroundImageDownloadResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateSandboxInstanceResponse">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:CreateSandboxInstanceResponse" name="CreateSandboxInstanceResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileDownloadRequest">
+<wsdl:part xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" element="sch:DataFileDownloadRequest" name="DataFileDownloadRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="api">
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="SFTPRepoSync">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:SFTPRepoSyncRequest" name="SFTPRepoSyncRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:SFTPRepoSyncResponse" name="SFTPRepoSyncResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TestList">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TestListRequest" name="TestListRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TestListResponse" name="TestListResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveConnectedOrder">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:RemoveConnectedOrderRequest" name="RemoveConnectedOrderRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:RemoveConnectedOrderResponse" name="RemoveConnectedOrderResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TargetingGroupsSearch">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TargetingGroupsSearchRequest" name="TargetingGroupsSearchRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TargetingGroupsSearchResponse" name="TargetingGroupsSearchResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointList">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TouchpointListRequest" name="TouchpointListRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TouchpointListResponse" name="TouchpointListResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MetadataReport">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:MetadataReportRequest" name="MetadataReportRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:MetadataReportResponse" name="MetadataReportResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TaskList">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TaskListRequest" name="TaskListRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TaskListResponse" name="TaskListResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileList">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DataFileListRequest" name="DataFileListRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DataFileListResponse" name="DataFileListResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ProjectAuditReport">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ProjectAuditReportRequest" name="ProjectAuditReportRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ProjectAuditReportResponse" name="ProjectAuditReportResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointClone">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TouchpointCloneRequest" name="TouchpointCloneRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TouchpointCloneResponse" name="TouchpointCloneResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DomainReport">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DomainReportRequest" name="DomainReportRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DomainReportResponse" name="DomainReportResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateConnectedOrder">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CreateConnectedOrderRequest" name="CreateConnectedOrderRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CreateConnectedOrderResponse" name="CreateConnectedOrderResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="GetBackgroundTaskStatus">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:GetBackgroundTaskStatusRequest" name="GetBackgroundTaskStatusRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:GetBackgroundTaskStatusResponse" name="GetBackgroundTaskStatusResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeactivateUser">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DeactivateUserRequest" name="DeactivateUserRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DeactivateUserResponse" name="DeactivateUserResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ConnectedOrderList">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ConnectedOrderListRequest" name="ConnectedOrderListRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ConnectedOrderListResponse" name="ConnectedOrderListResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ActivateExistingSchema">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ActivateExistingSchemaRequest" name="ActivateExistingSchemaRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ActivateExistingSchemaResponse" name="ActivateExistingSchemaResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="NodeToNodeCopy">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:NodeToNodeCopyRequest" name="NodeToNodeCopyRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:NodeToNodeCopyResponse" name="NodeToNodeCopyResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobClientBundle">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:JobClientBundleRequest" name="JobClientBundleRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:JobClientBundleResponse" name="JobClientBundleResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointImport">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TouchpointImportRequest" name="TouchpointImportRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TouchpointImportResponse" name="TouchpointImportResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="GetBackgroundTaskOutputFile">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:GetBackgroundTaskOutputFileRequest" name="GetBackgroundTaskOutputFileRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:GetBackgroundTaskOutputFileResponse" name="GetBackgroundTaskOutputFileResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataResourceList">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DataResourceListRequest" name="DataResourceListRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DataResourceListResponse" name="DataResourceListResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateDataResource">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CreateDataResourceRequest" name="CreateDataResourceRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CreateDataResourceResponse" name="CreateDataResourceResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadJobReport">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:UploadJobReportRequest" name="UploadJobReportRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:UploadJobReportResponse" name="UploadJobReportResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="AuditReport">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:AuditReportRequest" name="AuditReportRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:AuditReportResponse" name="AuditReportResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ContentSearch">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ContentSearchRequest" name="ContentSearchRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ContentSearchResponse" name="ContentSearchResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ApproveConnectedOrder">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ApproveConnectedOrderRequest" name="ApproveConnectedOrderRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ApproveConnectedOrderResponse" name="ApproveConnectedOrderResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeliveryReport">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DeliveryReportRequest" name="DeliveryReportRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DeliveryReportResponse" name="DeliveryReportResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileDownload">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DataFileDownloadRequest" name="DataFileDownloadRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DataFileDownloadResponse" name="DataFileDownloadResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointDeliveryEvent">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TouchpointDeliveryEventRequest" name="TouchpointDeliveryEventRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TouchpointDeliveryEventResponse" name="TouchpointDeliveryEventResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataSourceList">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DataSourceListRequest" name="DataSourceListRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DataSourceListResponse" name="DataSourceListResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Diagnostic">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DiagnosticRequest" name="DiagnosticRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DiagnosticResponse" name="DiagnosticResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageContentQuery">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:MessageContentQueryRequest" name="MessageContentQueryRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:MessageContentQueryResponse" name="MessageContentQueryResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileList">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:FileListRequest" name="FileListRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:FileListResponse" name="FileListResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EditTask">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:EditTaskRequest" name="EditTaskRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:EditTaskResponse" name="EditTaskResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageList">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:MessageListRequest" name="MessageListRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:MessageListResponse" name="MessageListResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UnifiedLoginReport">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:UnifiedLoginReportRequest" name="UnifiedLoginReportRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:UnifiedLoginReportResponse" name="UnifiedLoginReportResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageUpdate">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CompositionPackageUpdateRequest" name="CompositionPackageUpdateRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CompositionPackageUpdateResponse" name="CompositionPackageUpdateResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ProjectList">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ProjectListRequest" name="ProjectListRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ProjectListResponse" name="ProjectListResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeleteFile">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DeleteFileRequest" name="DeleteFileRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DeleteFileResponse" name="DeleteFileResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataAnonymize">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DataAnonymizeRequest" name="DataAnonymizeRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DataAnonymizeResponse" name="DataAnonymizeResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveTest">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:RemoveTestRequest" name="RemoveTestRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:RemoveTestResponse" name="RemoveTestResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointExport">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TouchpointExportRequest" name="TouchpointExportRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TouchpointExportResponse" name="TouchpointExportResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobStatus">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:JobStatusRequest" name="JobStatusRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:JobStatusResponse" name="JobStatusResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RerunTest">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:RerunTestRequest" name="RerunTestRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:RerunTestResponse" name="RerunTestResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ImportTransactionStats">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ImportTransactionStatsRequest" name="ImportTransactionStatsRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ImportTransactionStatsResponse" name="ImportTransactionStatsResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointProductionJobList">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TouchpointProductionJobListRequest" name="TouchpointProductionJobListRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TouchpointProductionJobListResponse" name="TouchpointProductionJobListResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="InitiateConnectedOrderDelivery">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:InitiateConnectedOrderDeliveryRequest" name="InitiateConnectedOrderDeliveryRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:InitiateConnectedOrderDeliveryResponse" name="InitiateConnectedOrderDeliveryResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveTask">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:RemoveTaskRequest" name="RemoveTaskRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:RemoveTaskResponse" name="RemoveTaskResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobDiagnosticBundle">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:JobDiagnosticBundleRequest" name="JobDiagnosticBundleRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:JobDiagnosticBundleResponse" name="JobDiagnosticBundleResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CloneConnectedOrder">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CloneConnectedOrderRequest" name="CloneConnectedOrderRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CloneConnectedOrderResponse" name="CloneConnectedOrderResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobServerBundle">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:JobServerBundleRequest" name="JobServerBundleRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:JobServerBundleResponse" name="JobServerBundleResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileUpload">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DataFileUploadRequest" name="DataFileUploadRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:DataFileUploadResponse" name="DataFileUploadResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageUpload">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CompositionPackageUploadRequest" name="CompositionPackageUploadRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CompositionPackageUploadResponse" name="CompositionPackageUploadResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileChunkDownload">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:FileChunkDownloadRequest" name="FileChunkDownloadRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:FileChunkDownloadResponse" name="FileChunkDownloadResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TargetingRulesSearch">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TargetingRulesSearchRequest" name="TargetingRulesSearchRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TargetingRulesSearchResponse" name="TargetingRulesSearchResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ReleaseForApprovalOrActivateConnectedOrder">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ReleaseForApprovalOrActivateConnectedOrderRequest" name="ReleaseForApprovalOrActivateConnectedOrderRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ReleaseForApprovalOrActivateConnectedOrderResponse" name="ReleaseForApprovalOrActivateConnectedOrderResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ImportJobStats">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ImportJobStatsRequest" name="ImportJobStatsRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:ImportJobStatsResponse" name="ImportJobStatsResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="NodeList">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:NodeListRequest" name="NodeListRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:NodeListResponse" name="NodeListResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EditTest">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:EditTestRequest" name="EditTestRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:EditTestResponse" name="EditTestResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointCollectionList">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TouchpointCollectionListRequest" name="TouchpointCollectionListRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:TouchpointCollectionListResponse" name="TouchpointCollectionListResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UsersTemplate">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:UsersTemplateRequest" name="UsersTemplateRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:UsersTemplateResponse" name="UsersTemplateResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadProcessedJob">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:UploadProcessedJobRequest" name="UploadProcessedJobRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:UploadProcessedJobResponse" name="UploadProcessedJobResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobPerformanceReport">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:JobPerformanceReportRequest" name="JobPerformanceReportRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:JobPerformanceReportResponse" name="JobPerformanceReportResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UsersReport">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:UsersReportRequest" name="UsersReportRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:UsersReportResponse" name="UsersReportResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadEmailTemplate">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:UploadEmailTemplateRequest" name="UploadEmailTemplateRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:UploadEmailTemplateResponse" name="UploadEmailTemplateResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageList">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CompositionPackageListRequest" name="CompositionPackageListRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CompositionPackageListResponse" name="CompositionPackageListResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateActivateUser">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CreateActivateUserRequest" name="CreateActivateUserRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CreateActivateUserResponse" name="CreateActivateUserResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileChunkUpload">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:FileChunkUploadRequest" name="FileChunkUploadRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:FileChunkUploadResponse" name="FileChunkUploadResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateSandboxInstance">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CreateSandboxInstanceRequest" name="CreateSandboxInstanceRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:CreateSandboxInstanceResponse" name="CreateSandboxInstanceResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageAuditReport">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:MessageAuditReportRequest" name="MessageAuditReportRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:MessageAuditReportResponse" name="MessageAuditReportResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="BackgroundImageDownload">
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:BackgroundImageDownloadRequest" name="BackgroundImageDownloadRequest"> </wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" message="tns:BackgroundImageDownloadResponse" name="BackgroundImageDownloadResponse"> </wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="apiSoap11" type="tns:api">
+<soap:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="SFTPRepoSync">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="SFTPRepoSyncRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="SFTPRepoSyncResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TestList">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TestListRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TestListResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveConnectedOrder">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveConnectedOrderRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveConnectedOrderResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TargetingGroupsSearch">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TargetingGroupsSearchRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TargetingGroupsSearchResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointList">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointListRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointListResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MetadataReport">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MetadataReportRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MetadataReportResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TaskList">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TaskListRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TaskListResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileList">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileListRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileListResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ProjectAuditReport">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ProjectAuditReportRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ProjectAuditReportResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointClone">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointCloneRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointCloneResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DomainReport">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DomainReportRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DomainReportResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateConnectedOrder">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateConnectedOrderRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateConnectedOrderResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="GetBackgroundTaskStatus">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="GetBackgroundTaskStatusRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="GetBackgroundTaskStatusResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeactivateUser">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeactivateUserRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeactivateUserResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ConnectedOrderList">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ConnectedOrderListRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ConnectedOrderListResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ActivateExistingSchema">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ActivateExistingSchemaRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ActivateExistingSchemaResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="NodeToNodeCopy">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="NodeToNodeCopyRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="NodeToNodeCopyResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobClientBundle">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobClientBundleRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobClientBundleResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointImport">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointImportRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointImportResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="GetBackgroundTaskOutputFile">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="GetBackgroundTaskOutputFileRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="GetBackgroundTaskOutputFileResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataResourceList">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataResourceListRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataResourceListResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateDataResource">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateDataResourceRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateDataResourceResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadJobReport">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadJobReportRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadJobReportResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="AuditReport">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="AuditReportRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="AuditReportResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ContentSearch">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ContentSearchRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ContentSearchResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ApproveConnectedOrder">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ApproveConnectedOrderRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ApproveConnectedOrderResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeliveryReport">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeliveryReportRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeliveryReportResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileDownload">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileDownloadRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileDownloadResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointDeliveryEvent">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointDeliveryEventRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointDeliveryEventResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataSourceList">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataSourceListRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataSourceListResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Diagnostic">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DiagnosticRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DiagnosticResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageContentQuery">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageContentQueryRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageContentQueryResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileList">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileListRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileListResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EditTask">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EditTaskRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EditTaskResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageList">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageListRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageListResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UnifiedLoginReport">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UnifiedLoginReportRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UnifiedLoginReportResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageUpdate">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageUpdateRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageUpdateResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ProjectList">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ProjectListRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ProjectListResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeleteFile">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeleteFileRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DeleteFileResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataAnonymize">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataAnonymizeRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataAnonymizeResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveTest">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveTestRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveTestResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointExport">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointExportRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointExportResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobStatus">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobStatusRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobStatusResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RerunTest">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RerunTestRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RerunTestResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ImportTransactionStats">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ImportTransactionStatsRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ImportTransactionStatsResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointProductionJobList">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointProductionJobListRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointProductionJobListResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="InitiateConnectedOrderDelivery">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="InitiateConnectedOrderDeliveryRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="InitiateConnectedOrderDeliveryResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveTask">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveTaskRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemoveTaskResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobDiagnosticBundle">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobDiagnosticBundleRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobDiagnosticBundleResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CloneConnectedOrder">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CloneConnectedOrderRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CloneConnectedOrderResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobServerBundle">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobServerBundleRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobServerBundleResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileUpload">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileUploadRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DataFileUploadResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageUpload">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageUploadRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageUploadResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileChunkDownload">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileChunkDownloadRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileChunkDownloadResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TargetingRulesSearch">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TargetingRulesSearchRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TargetingRulesSearchResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ReleaseForApprovalOrActivateConnectedOrder">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ReleaseForApprovalOrActivateConnectedOrderRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ReleaseForApprovalOrActivateConnectedOrderResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ImportJobStats">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ImportJobStatsRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ImportJobStatsResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="NodeList">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="NodeListRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="NodeListResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EditTest">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EditTestRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EditTestResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointCollectionList">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointCollectionListRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="TouchpointCollectionListResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UsersTemplate">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UsersTemplateRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UsersTemplateResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadProcessedJob">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadProcessedJobRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadProcessedJobResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobPerformanceReport">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobPerformanceReportRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JobPerformanceReportResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UsersReport">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UsersReportRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UsersReportResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadEmailTemplate">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadEmailTemplateRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="UploadEmailTemplateResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageList">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageListRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CompositionPackageListResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateActivateUser">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateActivateUserRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateActivateUserResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileChunkUpload">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileChunkUploadRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FileChunkUploadResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateSandboxInstance">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateSandboxInstanceRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateSandboxInstanceResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageAuditReport">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageAuditReportRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MessageAuditReportResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="BackgroundImageDownload">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction=""/>
+<wsdl:input xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="BackgroundImageDownloadRequest">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="BackgroundImageDownloadResponse">
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="apiService">
+<wsdl:port xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" binding="tns:apiSoap11" name="apiSoap11">
+<soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="https://pr222avi.messagepoint.com:443/mp/api/"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
