@@ -1,10 +1,9 @@
 package com.example.demo;
 
-import java.io.File;
-import java.io.FileWriter;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
+import java.io.FileWriter;
 
 public class XMLGenerator {
     public static void main(String[] args) {
@@ -16,58 +15,56 @@ public class XMLGenerator {
             xmlStreamWriter.writeStartElement("DriverFile");
             xmlStreamWriter.writeNamespace("xsi", "https://natwest.com/XMLSchema-instance");
 
-            writeElement(xmlStreamWriter, "RecordKey", "12344");
-            writeElement(xmlStreamWriter, "OrderUuid", "");
-            writeElement(xmlStreamWriter, "EnvironmentIdentifier", "");
-            writeElement(xmlStreamWriter, "PRODUCT_NAME", "");
-            writeElement(xmlStreamWriter, "Mailclass", "");
-            writeElement(xmlStreamWriter, "CinOrBin", "");
-            writeElement(xmlStreamWriter, "Cin2", "");
-            writeElement(xmlStreamWriter, "PartyID", "");
-            writeElement(xmlStreamWriter, "EDeliveryOnly", "");
-            writeElement(xmlStreamWriter, "PaperlessIndicator", "");
-            writeElement(xmlStreamWriter, "CustomerType", "");
+            writeElement(xmlStreamWriter, XmlElement.RECORD_KEY.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.ORDER_UUID.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.ENVIRONMENT_IDENTIFIER.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.PRODUCT_NAME.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.MAILCLASS.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.CIN_OR_BIN.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.CIN2.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.PARTY_ID.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.EDELIVERY_ONLY.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.PAPERLESS_INDICATOR.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.CUSTOMER_TYPE.getElementName(), "");
 
             xmlStreamWriter.writeStartElement("CCPTemplateDB");
-            writeElement(xmlStreamWriter, "TouchpointName", "");
-            writeElement(xmlStreamWriter, "TouchpointGUID", "");
-            writeElement(xmlStreamWriter, "TemplateID", "");
-            writeElement(xmlStreamWriter, "BusinessArea", "");
-            writeElement(xmlStreamWriter, "AddressFormatInd", "");
+            writeElement(xmlStreamWriter, XmlElement.TOUCHPOINT_NAME.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.TOUCHPOINT_GUID.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.TEMPLATE_ID.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.BUSINESS_AREA.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.ADDRESS_FORMAT_IND.getElementName(), "");
             xmlStreamWriter.writeEndElement();
 
             xmlStreamWriter.writeStartElement("CCPTeamDB");
-            writeElement(xmlStreamWriter, "CentreName", "");
-            writeElement(xmlStreamWriter, "TeamName", "");
-            writeElement(xmlStreamWriter, "CentreAddLine1", "");
-            writeElement(xmlStreamWriter, "CentreAddLine2", "");
-            writeElement(xmlStreamWriter, "CentreAddLine3", "");
-            writeElement(xmlStreamWriter, "CentreAddLine4", "");
-            writeElement(xmlStreamWriter, "CentreAddLine5", "");
-            writeElement(xmlStreamWriter, "CentrePostCode", "");
-            writeElement(xmlStreamWriter, "PhonenumberRBS", "");
-            writeElement(xmlStreamWriter, "PhonenumberNWB", "");
-            writeElement(xmlStreamWriter, "PhonenumberUBN", "");
-            writeElement(xmlStreamWriter, "LotCodeRbs", "");
-            writeElement(xmlStreamWriter, "LotCodeNwb", "");
-            writeElement(xmlStreamWriter, "LotCodeUbn", "");
-            writeElement(xmlStreamWriter, "OverseasPhoneNumberRbs", "");
-            writeElement(xmlStreamWriter, "OverseasPhoneNumberNwb", "");
-            writeElement(xmlStreamWriter, "OverseasPhoneNumberUbn", "");
-            writeElement(xmlStreamWriter, "BreCode", "");
-            writeElement(xmlStreamWriter, "BreDescription", "");
-            writeElement(xmlStreamWriter, "Signatory", "");
-            writeElement(xmlStreamWriter, "SignatoryJobTitle", "");
-            writeElement(xmlStreamWriter, "SignatoryRacfId", "");
+            writeElement(xmlStreamWriter, XmlElement.CENTRE_NAME.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.TEAM_NAME.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.CENTRE_ADD_LINE_1.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.CENTRE_ADD_LINE_2.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.CENTRE_ADD_LINE_3.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.CENTRE_ADD_LINE_4.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.CENTRE_ADD_LINE_5.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.CENTRE_POST_CODE.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.PHONENUMBER_RBS.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.PHONENUMBER_NWB.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.PHONENUMBER_UBN.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.LOT_CODE_RBS.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.LOT_CODE_NWB.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.LOT_CODE_UBN.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.OVERSEAS_PHONENUMBER_RBS.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.OVERSEAS_PHONENUMBER_NWB.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.OVERSEAS_PHONENUMBER_UBN.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.BRE_CODE.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.BRE_DESCRIPTION.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.SIGNATORY.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.SIGNATORY_JOB_TITLE.getElementName(), "");
+            writeElement(xmlStreamWriter, XmlElement.SIGNATORY_RACF_ID.getElementName(), "");
             xmlStreamWriter.writeEndElement();
 
+            // End elements and close writer
             xmlStreamWriter.writeEndElement();
             xmlStreamWriter.writeEndDocument();
-
             xmlStreamWriter.flush();
             xmlStreamWriter.close();
-
-            System.out.println("XML file generated successfully!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,3 +76,4 @@ public class XMLGenerator {
         writer.writeEndElement();
     }
 }
+
