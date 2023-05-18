@@ -1,0 +1,50 @@
+public enum XmlElement {
+    RECORD_KEY("RecordKey"),
+    ORDER_UUID("OrderUuid"),
+    ENVIRONMENT_IDENTIFIER("EnvironmentIdentifier"),
+    PRODUCT_NAME("PRODUCT_NAME"),
+    MAILCLASS("Mailclass"),
+    CIN_OR_BIN("CinOrBin"),
+    CIN2("Cin2"),
+    PARTY_ID("PartyID"),
+    EDELIVERY_ONLY("EDeliveryOnly"),
+    PAPERLESS_INDICATOR("PaperlessIndicator"),
+    CUSTOMER_TYPE("CustomerType"),
+    TOUCHPOINT_NAME("TouchpointName"),
+    TOUCHPOINT_GUID("TouchpointGUID"),
+    TEMPLATE_ID("TemplateID"),
+    BUSINESS_AREA("BusinessArea"),
+    ADDRESS_FORMAT_IND("AddressFormatInd"),
+    CENTRE_NAME("CentreName"),
+    TEAM_NAME("TeamName"),
+    CENTRE_ADD_LINE_1("CentreAddLine1"),
+    CENTRE_ADD_LINE_2("CentreAddLine2"),
+    CENTRE_ADD_LINE_3("CentreAddLine3"),
+    CENTRE_ADD_LINE_4("CentreAddLine4"),
+    CENTRE_ADD_LINE_5("CentreAddLine5"),
+    CENTRE_POST_CODE("CentrePostCode"),
+    PHONENUMBER_RBS("PhonenumberRBS"),
+    PHONENUMBER_NWB("PhonenumberNWB"),
+    PHONENUMBER_UBN("PhonenumberUBN"),
+    LOT_CODE_RBS("LotCodeRbs"),
+    LOT_CODE_NWB("LotCodeNwb"),
+    LOT_CODE_UBN("LotCodeUbn"),
+    OVERSEAS_PHONENUMBER_RBS("OverseasPhoneNumberRbs"),
+    OVERSEAS_PHONENUMBER_NWB("OverseasPhoneNumberNwb"),
+    OVERSEAS_PHONENUMBER_UBN("OverseasPhoneNumberUbn"),
+    BRE_CODE("BreCode"),
+    BRE_DESCRIPTION("BreDescription"),
+    SIGNATORY("Signatory"),
+    SIGNATORY_JOB_TITLE("SignatoryJobTitle"),
+    SIGNATORY_RACF_ID("SignatoryRacfId");
+
+    private String elementName;
+
+    XmlElement(String elementName) {
+        this.elementName = elementName;
+    }
+
+    public String getElementName() {
+        return elementName;
+    }
+}
