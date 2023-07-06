@@ -30,3 +30,21 @@ public class AuditRepositoryImpl implements AuditRepositoryCustom {
         return results.getMappedResults();
     }
 }
+
+List<Document> groupedData = auditRepository.fetchGroupedData();
+for (Document document : groupedData) {
+    String templateName = document.getString("_id.templateName");
+    String teamName = document.getString("_id.teamName");
+    String centreName = document.getString("_id.centreName");
+    String printMethod = document.getString("_id.printMethod");
+    String racfId = document.getString("_id.racfId");
+    int volume = document.getInteger("volume");
+
+    // Process the grouped data as needed
+    System.out.println("TemplateName: " + templateName);
+    System.out.println("TeamName: " + teamName);
+    System.out.println("CentreName: " + centreName);
+    System.out.println("PrintMethod: " + printMethod);
+    System.out.println("RacfId: " + racfId);
+    System.out.println("Volume: " + volume);
+}
