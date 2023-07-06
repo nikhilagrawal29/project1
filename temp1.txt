@@ -1,24 +1,32 @@
-<dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-core</artifactId>
-    <version>2.12.4</version>
-</dependency>
-<dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-databind</artifactId>
-    <version>2.12.4</version>
-</dependency>
-<dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-annotations</artifactId>
-    <version>2.12.4</version>
-</dependency>
-<dependency>
-    <groupId>io.github.openfeign</groupId>
-    <artifactId>feign-jackson</artifactId>
-    <version>11.8</version>
-</dependency>
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.aggregation.GroupOperation;
+import org.springframework.data.mongodb.core.aggregation.TypedAggregation;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 
-Feign.builder()
-                .encoder(new JacksonEncoder(objectMapper))
-                .decoder(new JacksonDecoder(objectMapper))
+import java.util.List;
+
+public interface AuditRepositoryCustom {
+    List<Document> fetchGroupedData();
+}
+
+public class AuditRepositoryImpl implements AuditRepositoryCustom {
+    private final MongoTemplate mongoTemplate;
+
+    @Autowired
+    public AuditRepositoryImpl(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
+
+    @Override
+    public List<Document> fetchGroupedData() {
+        GroupOperation groupOperation = Aggregation.group("templateName", "teamName", "centreName", "printMethod", "racfId")
+                .count().as("volume");
+
+        TypedAggregation<Audit> aggregation = Aggregation.newAggregation(Audit.class, groupOperation);
+
+        AggregationResults<Document> results = mongoTemplate.aggregate(aggregation, Audit.class, Document.class);
+        return results.getMappedResults();
+    }
+}
