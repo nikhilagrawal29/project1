@@ -3,8 +3,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
-
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -17,10 +17,15 @@ public class AuditService {
         this.mongoTemplate = mongoTemplate;
     }
 
-    public List<AggregateResult> getAggregateDataByMonth(LocalDateTime startDate, LocalDateTime endDate) {
+    public List<AggregateResult> getAggregateDataByMonth(String startDate, String endDate) {
+        // Parse the input date strings into LocalDateTime objects using a DateTimeFormatter
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDateTime parsedStartDate = LocalDateTime.parse(startDate, dateFormatter);
+        LocalDateTime parsedEndDate = LocalDateTime.parse(endDate, dateFormatter);
+
         // Create the aggregation pipeline
         Aggregation aggregation = Aggregation.newAggregation(
-                Aggregation.match(Criteria.where("auditDate").gte(startDate).lte(endDate)),
+                Aggregation.match(Criteria.where("auditDate").gte(parsedStartDate).lte(parsedEndDate)),
                 Aggregation.group("teamName", "templateName", "centreName", "racfId", "printPeriod")
                         .count().as("volume"),
                 Aggregation.project("teamName", "templateName", "centreName", "racfId", "printPeriod", "volume")
