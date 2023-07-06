@@ -1,44 +1,41 @@
 package com.natwest.ccps.connected.model.audit;
 
-import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.Date;
-
-@Data
-@Document
+@Document(collection ="auditlogs")
+@ToString
 public class Audit {
+    @Id
     private String auditId;
-    private String auditDate;
+    private String auditDate = LocalDateTime.now().toString();
     private String auditType;
+    private String envName;
     private String racfId;
     private String userGroup;
-    private String externalOrderId;
-    private Date date;
-    private String businessArea;
-    private String businessAreaUserId;
-    private String isCentralPrintSuccess;
-    private String isLocalPrintSuccess;
-    private String isArchivalSuccess;
+
     private String templateId;
+    private String templateName;
+    private String templateGuid;
+    private String thirdPartyTemplate;
+    private String templateBrand;
+    private String templateSubBrand;
+    private String businessAreaDetails;
+    private String businessArea;
+
+    private String externalOrderId;
+    private String createDateTime;
+    private String updateDateTime;
+
     private String teamName;
     private String centreName;
+    private String teamId;
     private String accountNo;
-    private String touchPointName;
-    private String touchPointGuid;
-    private String environemntName;
     private String sortcode;
-    private String brand;
-    private String subBrand;
-    private String thirdPartyTemplate;
-    private String addresseeLine1;
-    private String addresseeLine2;
-    private String addressLine1;
-    private String addressLine2;
-    private String addressLine3;
-    private String addressLine4;
-    private String addressLine5;
-    private String postCode;
+
+    private String branchAddress1;
+    private String branchAddress2;
+    private String branchAddress3;
+    private String branchAddress4;
+    private String branchAddress5;
+    private String branchPostCode;
     private String phoneNumberRBS;
     private String phoneNumberNWB;
     private String phoneNumberUBN;
@@ -53,7 +50,16 @@ public class Audit {
     private String signatory;
     private String signatoryJobTitle;
     private String signatorySignature;
-    private Date teamExpiryDate;
+    private String teamExpiryDate;
 
 
+    private String isCentralPrint="Y";
+    private String isLocalPrint="N";
+    private String printMethod="central";
+    //private String isArchived="N";
+    //private String isCancelled = "N";
+    private String fileName;
+    private String s3Url;
+    private String letterRefNo;
+    private String addressFormatInd;
 }
