@@ -1,21 +1,39 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://messagepoint.com/api/schemas">
-<soapenv:Header>
-<wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-<wsse:UsernameToken wsu:Id="">
-<wsse:Username>NWB-2CP-Users</wsse:Username>
-<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">Natwest@1234</wsse:Password>
-</wsse:UsernameToken>
-</wsse:Security>
-</soapenv:Header>
-<soapenv:Body>
-<sch:TouchpointListRequest>
-<sch:BranchId>Natwest</sch:BranchId>
-<sch:NodeId>Development</sch:NodeId>
-<sch:Prerelease>false</sch:Prerelease>
-<sch:RequesterUsername>CommercialBanking</sch:RequesterUsername>
-<sch:ListAll>false</sch:ListAll>
-<!--Optional:-->
-<sch:ExplicitResponse>true</sch:ExplicitResponse>
-</sch:TouchpointListRequest>
-</soapenv:Body>
-</soapenv:Envelope>
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Service
+public class AuditService {
+
+    private final AuditRepository auditRepository;
+
+    @Autowired
+    public AuditService(AuditRepository auditRepository) {
+        this.auditRepository = auditRepository;
+    }
+
+    public List<AggregateResult> getAggregateDataByMonth(LocalDateTime startDate, LocalDateTime endDate) {
+        // Create the aggregation pipeline
+        Aggregation aggregation = Aggregation.newAggregation(
+            Aggregation.match(Criteria.where("auditDate").gte(startDate).lte(endDate)),
+            Aggregation.group("teamName", "templateName", "centreName", "racfId", "printPeriod")
+                .count().as("volume"),
+            Aggregation.project("teamName", "templateName", "centreName", "racfId", "printPeriod", "volume")
+        );
+
+        // Execute the aggregation query
+        AggregationResults<AggregateResult> results = auditRepository.aggregate(aggregation, "auditlogs", AggregateResult.class);
+        return results.getMappedResults();
+    }
+}
+public class AggregateResult {
+    private String teamName;
+    private String templateName;
+    private String centreName;
+    private String racfId;
+    private String printPeriod;
+    private int volume;
+
+    // Add getters and setters
+}
