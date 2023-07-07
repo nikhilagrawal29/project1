@@ -1,61 +1,14 @@
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.stereotype.Service;
-import org.springframework.data.mongodb.core.aggregation.*;
-import org.springframework.data.mongodb.core.query.Criteria;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.List;
 
-@Service
-public class AuditService {
+public class DateUtil {
 
-    private final MongoTemplate mongoTemplate;
-
-    @Autowired
-    public AuditService(MongoTemplate mongoTemplate) {
-        this.mongoTemplate = mongoTemplate;
-    }
-
-    public List<AggregateResult> getAggregateDataByMonth(LocalDate startDate, LocalDate endDate) {
-        // Convert LocalDate to Date for the aggregation query
-        Date parsedStartDate = DateConversionUtil.toDate(startDate);
-        Date parsedEndDate = DateConversionUtil.toDate(endDate);
-
-        // Create the aggregation pipeline
-        Aggregation aggregation = Aggregation.newAggregation(
-                Aggregation.match(Criteria.where("auditDate").gte(parsedStartDate).lte(parsedEndDate)),
-                Aggregation.project()
-                        .andExpression("{ $dateToString: { format: '%Y-%m', date: '$auditDate' } }").as("month")
-                        .and("teamName").as("teamName")
-                        .and("templateName").as("templateName")
-                        .and("centreName").as("centreName")
-                        .and("racfId").as("racfId")
-                        .and("printPeriod").as("printPeriod"),
-                Aggregation.group("month", "teamName", "templateName", "centreName", "racfId", "printPeriod")
-                        .count().as("volume"),
-                Aggregation.project("month", "teamName", "templateName", "centreName", "racfId", "printPeriod", "volume")
-        );
-
-        // Execute the aggregation query
-        AggregationResults<AggregateResult> results = mongoTemplate.aggregate(aggregation, "auditlogs", AggregateResult.class);
-        return results.getMappedResults();
+    public static String getYearMonthFromDate(Date date) {
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return localDate.format(DateTimeFormatter.ofPattern("dd-MMM"));
     }
 }
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.temporal.TemporalAccessor;
-import java.util.Date;
-
-public class DateConversionUtil {
-
-    public static Date toDate(TemporalAccessor temporalAccessor) {
-        if (temporalAccessor == null) {
-            return null;
-        }
-        LocalDateTime localDateTime = LocalDateTime.from(temporalAccessor);
-        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
-    }
-
-}
+Date date = new Date(); // Your Date object
+String yearMonth = DateUtil.getYearMonthFromDate(date);
+System.out.println(yearMonth); // Output: 07-Jul
