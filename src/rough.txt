@@ -1,14 +1,81 @@
-package com.natwest.ccps.mi.model;
+import com.opencsv.CSVWriter;
+import com.natwest.ccps.mi.model.AggregateResult;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import lombok.Data;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
-@Data
-public class AggregateResult {
-    private String teamName;
-    private String templateName;
-    private String centreName;
-    private String racfId;
-    private String printMethod;
-    private String createdDateWithMonthYear;
-    private int volume;
+@Controller
+public class CsvController {
+
+    @GetMapping("/download-csv")
+    public void downloadCsv(HttpServletResponse response) throws IOException {
+        // Set the content type and attachment header
+        response.setContentType("text/csv");
+        response.setHeader("Content-Disposition", "attachment; filename=\"data.csv\"");
+
+        // Create a PrintWriter to write CSV data
+        PrintWriter writer = response.getWriter();
+
+        // Create a CSVWriter with the PrintWriter
+        CSVWriter csvWriter = new CSVWriter(writer);
+
+        // Generate sample data
+        List<AggregateResult> data = generateSampleData();
+
+        // Write CSV headers
+        csvWriter.writeNext(getCsvHeaders());
+
+        // Write CSV data
+        for (AggregateResult result : data) {
+            csvWriter.writeNext(getCsvRow(result));
+        }
+
+        // Flush and close the CSVWriter and PrintWriter
+        csvWriter.flush();
+        csvWriter.close();
+        writer.close();
+    }
+
+    private List<AggregateResult> generateSampleData() {
+        // Create sample data
+        List<AggregateResult> data = new ArrayList<>();
+
+        AggregateResult result1 = new AggregateResult();
+        result1.setTeamName("Team A");
+        result1.setTemplateName("Template 1");
+        result1.setCentreName("Centre X");
+        result1.setRacfId("user1");
+        result1.setPrintMethod("Method 1");
+        result1.setCreatedDateWithMonthYear("2023-07");
+        result1.setVolume(10);
+        data.add(result1);
+
+        AggregateResult result2 = new AggregateResult();
+        result2.setTeamName("Team B");
+        result2.setTemplateName("Template 2");
+        result2.setCentreName("Centre Y");
+        result2.setRacfId("user2");
+        result2.setPrintMethod("Method 2");
+        result2.setCreatedDateWithMonthYear("2023-07");
+        result2.setVolume(15);
+        data.add(result2);
+
+        return data;
+    }
+
+    private String[] getCsvHeaders() {
+        return new String[]{"Team Name", "Template Name", "Centre Name", "RACF ID", "Print Method",
+                "Created Date with Month-Year", "Volume"};
+    }
+
+    private String[] getCsvRow(AggregateResult result) {
+        return new String[]{result.getTeamName(), result.getTemplateName(), result.getCentreName(),
+                result.getRacfId(), result.getPrintMethod(), result.getCreatedDateWithMonthYear(),
+                String.valueOf(result.getVolume())};
+    }
 }
