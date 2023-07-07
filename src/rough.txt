@@ -1,14 +1,14 @@
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
+package com.natwest.ccps.mi.model;
 
-public class DateUtil {
+import lombok.Data;
 
-    public static String getYearMonthFromDate(Date date) {
-        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return localDate.format(DateTimeFormatter.ofPattern("dd-MMM"));
-    }
+@Data
+public class AggregateResult {
+    private String teamName;
+    private String templateName;
+    private String centreName;
+    private String racfId;
+    private String printMethod;
+    private String createdDateWithMonthYear;
+    private int volume;
 }
-Date date = new Date(); // Your Date object
-String yearMonth = DateUtil.getYearMonthFromDate(date);
-System.out.println(yearMonth); // Output: 07-Jul
