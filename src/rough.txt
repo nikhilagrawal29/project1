@@ -1,52 +1,75 @@
-   // Create the aggregation pipeline
-    Aggregation.match(Criteria.where("auditDate").gte(startDate).lte(endDate)),
-            Aggregation.project()
-                .andExpression("{ $dateToString: { format: '%Y-%m', date: '$auditDate' } }").as("month"),
-            Aggregation.group("month", "teamName", "templateName", "centreName", "racfId", "printPeriod")
-                .count().as("volume"),
-            Aggregation.project("month", "teamName", "templateName", "centreName", "racfId", "printPeriod", "volume")
-        );
-
-        // Execute the aggregation query
-        AggregationResults<AggregateResult> results = mongoTemplate.aggregate(aggregation, "auditlogs", AggregateResult.class);
-        return results.getMappedResults();
-    }
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Aggregates;
+import com.mongodb.client.model.Filters;
+import org.bson.Document;
 import org.springframework.stereotype.Service;
-import org.springframework.data.mongodb.core.aggregation.*;
-import org.springframework.data.mongodb.core.query.Criteria;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
+import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class AuditService {
 
-    private final MongoTemplate mongoTemplate;
+    private final MongoCollection<Document> auditCollection;
 
-    @Autowired
-    public AuditService(MongoTemplate mongoTemplate) {
-        this.mongoTemplate = mongoTemplate;
+    public AuditService(MongoCollection<Document> auditCollection) {
+        this.auditCollection = auditCollection;
     }
 
-    public List<AggregateResult> getAggregateDataByMonth(String startDate, String endDate) {
-        // Parse the input date strings into LocalDateTime objects using a DateTimeFormatter
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDateTime parsedStartDate = LocalDateTime.parse(startDate, dateFormatter);
-        LocalDateTime parsedEndDate = LocalDateTime.parse(endDate, dateFormatter);
+    public List<AggregateResult> getAggregateDataByMonth(LocalDate startDate, LocalDate endDate) {
+        List<AggregateResult> results = new ArrayList<>();
 
-        // Create the aggregation pipeline
-        Aggregation aggregation = Aggregation.newAggregation(
-                Aggregation.match(Criteria.where("auditDate").gte(parsedStartDate).lte(parsedEndDate)),
-                Aggregation.group("teamName", "templateName", "centreName", "racfId", "printPeriod")
-                        .count().as("volume"),
-                Aggregation.project("teamName", "templateName", "centreName", "racfId", "printPeriod", "volume")
-        );
+        // Iterate through each month in the date range
+        YearMonth currentMonth = YearMonth.from(startDate);
+        while (!currentMonth.isAfter(YearMonth.from(endDate))) {
+            // Calculate the start and end dates of the current month
+            LocalDate monthStartDate = currentMonth.atDay(1);
+            LocalDate monthEndDate = currentMonth.atEndOfMonth();
 
-        // Execute the aggregation query
-        AggregationResults<AggregateResult> results = mongoTemplate.aggregate(aggregation, "auditlogs", AggregateResult.class);
-        return results.getMappedResults();
+            // Perform the aggregation query for the current month
+            Document matchStage = new Document("$match", Filters.and(
+                    Filters.gte("auditDate", monthStartDate),
+                    Filters.lte("auditDate", monthEndDate)
+            ));
+            Document groupStage = new Document("$group", new Document("_id", null)
+                    .append("month", new Document("$dateToString", new Document("format", "%Y-%m").append("date", "$auditDate")))
+                    .append("teamName", new Document("$first", "$teamName"))
+                    .append("templateName", new Document("$first", "$templateName"))
+                    .append("centreName", new Document("$first", "$centreName"))
+                    .append("racfId", new Document("$first", "$racfId"))
+                    .append("printPeriod", new Document("$first", "$printPeriod"))
+                    .append("volume", new Document("$sum", 1))
+            );
+
+            // Execute the aggregation query for the current month
+            List<Document> pipeline = List.of(matchStage, groupStage);
+            MongoCursor<Document> cursor = auditCollection.aggregate(pipeline).iterator();
+            while (cursor.hasNext()) {
+                Document resultDoc = cursor.next();
+                AggregateResult result = parseAggregateResult(resultDoc);
+                results.add(result);
+            }
+
+            // Move to the next month
+            currentMonth = currentMonth.plusMonths(1);
+        }
+
+        return results;
+    }
+
+    private AggregateResult parseAggregateResult(Document document) {
+        String month = document.getString("month");
+        String teamName = document.getString("teamName");
+        String templateName = document.getString("templateName");
+        String centreName = document.getString("centreName");
+        String racfId = document.getString("racfId");
+        String printPeriod = document.getString("printPeriod");
+        int volume = document.getInteger("volume");
+
+        return new AggregateResult(month, teamName, templateName, centreName, racfId, printPeriod, volume);
     }
 }
