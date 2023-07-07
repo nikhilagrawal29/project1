@@ -1,8 +1,7 @@
    // Create the aggregation pipeline
-        Aggregation aggregation = Aggregation.newAggregation(
-            Aggregation.match(Criteria.where("auditDate").gte(startDate).lte(endDate)),
+    Aggregation.match(Criteria.where("auditDate").gte(startDate).lte(endDate)),
             Aggregation.project()
-                .andExpression("month(auditDate)").as("month"),
+                .andExpression("{ $dateToString: { format: '%Y-%m', date: '$auditDate' } }").as("month"),
             Aggregation.group("month", "teamName", "templateName", "centreName", "racfId", "printPeriod")
                 .count().as("volume"),
             Aggregation.project("month", "teamName", "templateName", "centreName", "racfId", "printPeriod", "volume")
