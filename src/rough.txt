@@ -1,81 +1,50 @@
-import com.opencsv.CSVWriter;
-import com.natwest.ccps.mi.model.AggregateResult;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import javax.servlet.http.HttpServletResponse;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
-@Controller
-public class CsvController {
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
-    @GetMapping("/download-csv")
-    public void downloadCsv(HttpServletResponse response) throws IOException {
-        // Set the content type and attachment header
-        response.setContentType("text/csv");
-        response.setHeader("Content-Disposition", "attachment; filename=\"data.csv\"");
+public class CSVtoJSONConverter {
 
-        // Create a PrintWriter to write CSV data
-        PrintWriter writer = response.getWriter();
+    public static void main(String[] args) {
+        String csvFile = "data.csv"; // Path to the CSV file
+        String jsonFile = "output.json"; // Path to the output JSON file
 
-        // Create a CSVWriter with the PrintWriter
-        CSVWriter csvWriter = new CSVWriter(writer);
+        try (FileReader fileReader = new FileReader(csvFile);
+             CSVParser csvParser = new CSVParser(fileReader, CSVFormat.DEFAULT)) {
 
-        // Generate sample data
-        List<AggregateResult> data = generateSampleData();
+            JSONArray jsonArray = new JSONArray();
 
-        // Write CSV headers
-        csvWriter.writeNext(getCsvHeaders());
+            // Get the CSV records and iterate over them
+            for (CSVRecord csvRecord : csvParser) {
+                JSONObject jsonObject = new JSONObject();
 
-        // Write CSV data
-        for (AggregateResult result : data) {
-            csvWriter.writeNext(getCsvRow(result));
+                // Get the CSV headers
+                String[] headers = csvParser.getHeaderMap().keySet().toArray(new String[0]);
+
+                // Map the values to the headers and create JSON objects
+                for (int i = 0; i < headers.length; i++) {
+                    String header = headers[i];
+                    String value = csvRecord.get(i);
+                    jsonObject.put(header, value);
+                }
+
+                jsonArray.add(jsonObject);
+            }
+
+            // Write the JSON array to the output file
+            try (FileWriter fileWriter = new FileWriter(jsonFile)) {
+                fileWriter.write(jsonArray.toJSONString());
+                fileWriter.flush();
+            }
+
+            System.out.println("Conversion completed. Output JSON file: " + jsonFile);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        // Flush and close the CSVWriter and PrintWriter
-        csvWriter.flush();
-        csvWriter.close();
-        writer.close();
-    }
-
-    private List<AggregateResult> generateSampleData() {
-        // Create sample data
-        List<AggregateResult> data = new ArrayList<>();
-
-        AggregateResult result1 = new AggregateResult();
-        result1.setTeamName("Team A");
-        result1.setTemplateName("Template 1");
-        result1.setCentreName("Centre X");
-        result1.setRacfId("user1");
-        result1.setPrintMethod("Method 1");
-        result1.setCreatedDateWithMonthYear("2023-07");
-        result1.setVolume(10);
-        data.add(result1);
-
-        AggregateResult result2 = new AggregateResult();
-        result2.setTeamName("Team B");
-        result2.setTemplateName("Template 2");
-        result2.setCentreName("Centre Y");
-        result2.setRacfId("user2");
-        result2.setPrintMethod("Method 2");
-        result2.setCreatedDateWithMonthYear("2023-07");
-        result2.setVolume(15);
-        data.add(result2);
-
-        return data;
-    }
-
-    private String[] getCsvHeaders() {
-        return new String[]{"Team Name", "Template Name", "Centre Name", "RACF ID", "Print Method",
-                "Created Date with Month-Year", "Volume"};
-    }
-
-    private String[] getCsvRow(AggregateResult result) {
-        return new String[]{result.getTeamName(), result.getTemplateName(), result.getCentreName(),
-                result.getRacfId(), result.getPrintMethod(), result.getCreatedDateWithMonthYear(),
-                String.valueOf(result.getVolume())};
     }
 }
